@@ -1,0 +1,24 @@
+{
+  "name": "waoowaoo-skills",
+  "version": "1.0.0",
+  "description": "Standalone MCP skills server for waoowaoo AI video production workflow",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.26.0",
+    "mysql2": "^3.15.1",
+    "zod": "^3.25.23"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=18.18.0"
+  }
+}

@@ -10,6 +10,11 @@
 !.yarn/releases
 !.yarn/versions
 
+# skills (standalone MCP package) - build artifacts and local config
+/skills/node_modules
+/skills/dist
+/skills/.env
+
 # testing
 /coverage
 

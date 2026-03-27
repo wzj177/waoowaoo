@@ -3,7 +3,6 @@ import { apiHandler, ApiError } from '@/lib/api-errors'
 import { isErrorResponse, requireUserAuth } from '@/lib/api-auth'
 import {
   AssistantPlatformError,
-  AssistantId,
   createAssistantChatResponse,
   isAssistantId,
 } from '@/lib/assistant-platform'
@@ -14,12 +13,12 @@ type RequestBody = {
   context?: unknown
 }
 
-function readAssistantId(value: unknown): AssistantId {
+function readAssistantId(value: unknown): 'api-config-template' | 'tutorial' {
   if (!isAssistantId(value)) {
     throw new ApiError('INVALID_PARAMS', {
       code: 'ASSISTANT_INVALID_REQUEST',
       field: 'assistantId',
-      message: 'assistantId must be api-config-template, tutorial, or novel-production',
+      message: 'assistantId must be api-config-template or tutorial',
     })
   }
   return value

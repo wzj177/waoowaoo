@@ -1,12 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 
-export type AssistantPromptId = 'api-config-template' | 'tutorial' | 'novel-production'
+export type AssistantPromptId = 'api-config-template' | 'tutorial'
 
 const PROMPT_FILE_BY_ID: Record<AssistantPromptId, string> = {
   'api-config-template': 'api-config-template.system.txt',
   tutorial: 'tutorial.system.txt',
-  'novel-production': 'novel-production.system.txt',
 }
 
 const promptCache = new Map<AssistantPromptId, string>()

@@ -88,6 +88,39 @@ describe('api specific - user assistant chat', () => {
     expect(createAssistantChatResponseMock).not.toHaveBeenCalled()
   })
 
+  it('accepts novel-production assistant request and forwards payload', async () => {
+    installAuthMocks()
+    mockAuthenticated('user-1')
+    const route = await import('@/app/api/user/assistant/chat/route')
+
+    const req = buildMockRequest({
+      path: '/api/user/assistant/chat',
+      method: 'POST',
+      body: {
+        assistantId: 'novel-production',
+        context: {},
+        messages: [{
+          id: 'm1',
+          role: 'user',
+          parts: [{ type: 'text', text: '我的项目进展到哪一步了？' }],
+        }],
+      },
+    })
+
+    const res = await route.POST(req, routeContext)
+    expect(res.status).toBe(200)
+    expect(createAssistantChatResponseMock).toHaveBeenCalledWith({
+      userId: 'user-1',
+      assistantId: 'novel-production',
+      context: {},
+      messages: [{
+        id: 'm1',
+        role: 'user',
+        parts: [{ type: 'text', text: '我的项目进展到哪一步了？' }],
+      }],
+    })
+  })
+
   it('maps assistant platform missing-config error to 400 response', async () => {
     installAuthMocks()
     mockAuthenticated('user-1')

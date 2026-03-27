@@ -1,7 +1,7 @@
 import type { ToolSet } from 'ai'
 import type { OpenAICompatMediaTemplate } from '@/lib/openai-compat-media-template'
 
-export type AssistantId = 'api-config-template' | 'tutorial'
+export type AssistantId = 'api-config-template' | 'tutorial' | 'novel-production'
 
 export interface AssistantContext {
   providerId?: string
